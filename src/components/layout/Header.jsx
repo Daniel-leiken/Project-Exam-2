@@ -50,19 +50,17 @@ function Header() {
               <NavLink to="/profile" className={navLinkClass}>
                 {user?.name ?? 'Profile'}
               </NavLink>
-              <Button variant="outline" size="sm" onClick={handleLogout}>
+              <Button variant="outline" onClick={handleLogout}>
                 <LogOut className="h-4 w-4" aria-hidden="true" />
                 Log out
               </Button>
             </div>
           ) : (
             <div className="flex items-center gap-3">
-              <Button variant="ghost" size="sm" onClick={() => navigate('/login')}>
+              <Button variant="ghost" onClick={() => navigate('/login')}>
                 Log in
               </Button>
-              <Button size="sm" onClick={() => navigate('/register')}>
-                Get started
-              </Button>
+              <Button onClick={() => navigate('/register')}>Get started</Button>
             </div>
           )}
         </nav>
