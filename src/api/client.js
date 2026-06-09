@@ -1,4 +1,4 @@
-import { API_BASE_URL } from './constants';
+import { API_BASE_URL, API_KEY } from './constants';
 import { getApiKey, getToken } from '@/utils/storage';
 
 export class ApiError extends Error {
@@ -23,7 +23,8 @@ export async function apiRequest(endpoint, { method = 'GET', body, auth = false,
 
   if (auth) {
     const token = getToken();
-    const apiKey = getApiKey();
+    // Prefer the key generated at login; fall back to a static env key if provided.
+    const apiKey = getApiKey() ?? API_KEY;
     if (token) config.headers.Authorization = `Bearer ${token}`;
     if (apiKey) config.headers['X-Noroff-API-Key'] = apiKey;
   }
