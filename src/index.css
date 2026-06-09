@@ -1,3 +1,23 @@
+/* Metric-matched fallback fonts: sized to occupy the same space as the web
+   fonts so swapping them in on load doesn't shift the layout (no FOUT jump). */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
+
+@font-face {
+  font-family: 'Fraunces Fallback';
+  src: local('Georgia');
+  ascent-override: 98%;
+  descent-override: 34%;
+  line-gap-override: 0%;
+  size-adjust: 97%;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
