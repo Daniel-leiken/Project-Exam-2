@@ -6,6 +6,7 @@ const links = [
   { label: 'Email us', href: 'mailto:hello@holidaze.com', icon: Mail },
 ];
 
+/** Site footer: brand, a couple of contact links, and a copyright line. */
 function Footer() {
   return (
     <footer className="border-t border-neutral-300 bg-white">

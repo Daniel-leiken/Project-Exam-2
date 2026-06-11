@@ -1,5 +1,9 @@
 import { cva } from 'class-variance-authority';
 
+/**
+ * Button class variants (variant × size) from the Holidaze style guide.
+ * Shared by the {@link Button} component and link-styled-as-button usages.
+ */
 export const buttonVariants = cva(
   'inline-flex items-center justify-center gap-2 rounded-sm font-medium transition-colors disabled:pointer-events-none disabled:opacity-50',
   {

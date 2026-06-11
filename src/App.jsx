@@ -10,6 +10,10 @@ import Profile from '@/pages/Profile';
 import ManagerDashboard from '@/pages/ManagerDashboard';
 import NotFound from '@/pages/NotFound';
 
+/**
+ * Application routes. Every page renders inside the shared {@link Layout}.
+ * `/profile` requires authentication; `/manager` requires a venue manager.
+ */
 function App() {
   return (
     <Routes>

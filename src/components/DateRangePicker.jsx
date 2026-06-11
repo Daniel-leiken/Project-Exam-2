@@ -11,7 +11,14 @@ const themeStyle = {
 
 /**
  * Booking calendar for selecting a check-in / check-out range.
- * Pass already-booked dates via `disabled` (date-fns ranges or matchers).
+ *
+ * @param {object} props
+ * @param {import('react-day-picker').DateRange} [props.selected] - The selected range.
+ * @param {(range: import('react-day-picker').DateRange|undefined) => void} props.onSelect
+ * @param {Array<object>} [props.disabled=[]] - Already-booked dates/ranges to block.
+ * @param {boolean} [props.disablePast=true] - Also block dates before today.
+ * @param {number} [props.numberOfMonths=1] - Months to display side by side.
+ * @param {string} [props.className]
  */
 function DateRangePicker({
   selected,

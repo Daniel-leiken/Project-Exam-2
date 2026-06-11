@@ -1,6 +1,15 @@
 import { forwardRef } from 'react';
 import { cn } from '@/utils/cn';
 
+/**
+ * Styled text input. Pass `invalid` to show the error border and set `aria-invalid`.
+ * Usually rendered through {@link FormField}, which adds the label and error message.
+ *
+ * @param {object} props
+ * @param {string} [props.className]
+ * @param {boolean} [props.invalid=false]
+ * @param {React.Ref<HTMLInputElement>} ref
+ */
 const Input = forwardRef(function Input({ className, invalid = false, ...props }, ref) {
   return (
     <input

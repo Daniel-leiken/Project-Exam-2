@@ -7,6 +7,10 @@ import { Card, CardContent } from '@/components/ui/Card';
 import { FormField } from '@/components/ui/FormField';
 import { Button } from '@/components/ui/Button';
 
+/**
+ * Profile page (protected). Shows the signed-in user and lets them update their
+ * avatar. Upcoming bookings are added in phase 4.
+ */
 function Profile() {
   const { user, updateUser } = useAuth();
   const toast = useToast();

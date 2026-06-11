@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { Placeholder } from '@/components/Placeholder';
 
+/** Single venue page (by id). Full details and the booking calendar land in phase 4. */
 function VenueDetail() {
   const { id } = useParams();
 

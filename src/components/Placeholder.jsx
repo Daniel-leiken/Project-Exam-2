@@ -1,4 +1,10 @@
-/** Temporary section for routes whose full UI lands in a later phase. */
+/**
+ * Temporary section for routes whose full UI lands in a later phase.
+ *
+ * @param {object} props
+ * @param {string} props.title
+ * @param {React.ReactNode} [props.children] - Optional supporting copy.
+ */
 function Placeholder({ title, children }) {
   return (
     <section className="mx-auto max-w-screen-xl px-5 py-16 lg:px-20">

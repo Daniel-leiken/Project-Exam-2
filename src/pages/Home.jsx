@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { buttonVariants } from '@/components/ui/button-variants';
 
+/** Landing page: hero headline with a call-to-action into the venue list. */
 function Home() {
   return (
     <section className="mx-auto max-w-screen-xl px-5 py-16 lg:px-20 lg:py-24">

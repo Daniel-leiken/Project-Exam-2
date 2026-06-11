@@ -6,6 +6,19 @@ import { cn } from '@/utils/cn';
 const FOCUSABLE =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
+/**
+ * Accessible modal dialog rendered in a portal. Traps focus while open, closes
+ * on Escape or backdrop click, locks body scroll, and restores focus to the
+ * previously focused element on close.
+ *
+ * @param {object} props
+ * @param {boolean} props.open
+ * @param {() => void} props.onClose
+ * @param {string} [props.title] - Used as the accessible dialog label.
+ * @param {React.ReactNode} [props.children]
+ * @param {React.ReactNode} [props.footer] - Right-aligned action row.
+ * @param {string} [props.className]
+ */
 function Modal({ open, onClose, title, children, footer, className }) {
   const dialogRef = useRef(null);
   const titleId = useId();

@@ -1,4 +1,13 @@
-/** Centered shell for the login and register forms. */
+/**
+ * Centered shell for the login and register forms: a title, optional subtitle,
+ * the form content, and an optional footer (e.g. a link to the other page).
+ *
+ * @param {object} props
+ * @param {string} props.title
+ * @param {string} [props.subtitle]
+ * @param {React.ReactNode} props.children
+ * @param {React.ReactNode} [props.footer]
+ */
 function AuthCard({ title, subtitle, children, footer }) {
   return (
     <section className="mx-auto w-full max-w-md px-5 py-16">

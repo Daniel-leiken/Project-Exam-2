@@ -6,6 +6,11 @@ import { useToast } from '@/hooks/useToast';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/utils/cn';
 
+/**
+ * Sticky site header with responsive navigation. Shows venue-manager links and
+ * profile/logout when authenticated, or login/register when not. Collapses to a
+ * toggle menu below the `md` breakpoint.
+ */
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { isAuthenticated, isVenueManager, user, logout } = useAuth();
@@ -102,7 +107,13 @@ function Header() {
           <div className="mt-4 flex flex-col gap-2">
             {isAuthenticated ? (
               <>
-                <Button variant="outline" onClick={() => { setMenuOpen(false); navigate('/profile'); }}>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    navigate('/profile');
+                  }}
+                >
                   {user?.name ?? 'Profile'}
                 </Button>
                 <Button variant="ghost" onClick={handleLogout}>
@@ -112,10 +123,21 @@ function Header() {
               </>
             ) : (
               <>
-                <Button variant="ghost" onClick={() => { setMenuOpen(false); navigate('/login'); }}>
+                <Button
+                  variant="ghost"
+                  onClick={() => {
+                    setMenuOpen(false);
+                    navigate('/login');
+                  }}
+                >
                   Log in
                 </Button>
-                <Button onClick={() => { setMenuOpen(false); navigate('/register'); }}>
+                <Button
+                  onClick={() => {
+                    setMenuOpen(false);
+                    navigate('/register');
+                  }}
+                >
                   Get started
                 </Button>
               </>

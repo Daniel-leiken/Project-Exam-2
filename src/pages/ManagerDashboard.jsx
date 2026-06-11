@@ -1,5 +1,6 @@
 import { Placeholder } from '@/components/Placeholder';
 
+/** Venue-manager dashboard (manager-only route). Full features land in phase 5. */
 function ManagerDashboard() {
   return (
     <Placeholder title="Manager dashboard">

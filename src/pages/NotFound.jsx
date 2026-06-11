@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { buttonVariants } from '@/components/ui/button-variants';
 
+/** 404 page shown for unmatched routes. */
 function NotFound() {
   return (
     <section className="mx-auto flex max-w-screen-xl flex-col items-center px-5 py-24 text-center lg:px-20">

@@ -7,6 +7,15 @@ const sizes = {
   lg: 'h-8 w-8',
 };
 
+/**
+ * Accessible loading spinner. Announces its state via `role="status"` and a
+ * visually-hidden label.
+ *
+ * @param {object} props
+ * @param {'sm'|'md'|'lg'} [props.size='md']
+ * @param {string} [props.className]
+ * @param {string} [props.label='Loading…'] - Screen-reader text.
+ */
 function Spinner({ size = 'md', className, label = 'Loading…' }) {
   return (
     <span role="status" className={cn('inline-flex text-primary-700', className)}>

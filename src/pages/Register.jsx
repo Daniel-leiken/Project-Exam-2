@@ -16,6 +16,11 @@ const initialForm = {
   venueManager: false,
 };
 
+/**
+ * Registration page for customers and venue managers. Validates input against
+ * the Noroff rules (stud.noroff.no email, username, password length), creates
+ * the account, then logs the user straight in.
+ */
 function Register() {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
@@ -118,7 +123,7 @@ function Register() {
             onChange={(event) =>
               setForm((current) => ({ ...current, venueManager: event.target.checked }))
             }
-            className="mt-0.5 h-4 w-4 rounded border-neutral-400 text-primary-900"
+            className="mt-0.5 h-4 w-4 rounded border-neutral-400 accent-primary-900"
           />
           <span>
             Register as a venue manager

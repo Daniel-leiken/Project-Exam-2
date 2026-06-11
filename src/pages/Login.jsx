@@ -8,6 +8,10 @@ import { AuthCard } from '@/components/AuthCard';
 import { FormField } from '@/components/ui/FormField';
 import { Button } from '@/components/ui/Button';
 
+/**
+ * Login page. Validates the credentials client-side, signs the user in, and
+ * returns them to the page they were trying to reach (or home).
+ */
 function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});

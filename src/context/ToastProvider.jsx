@@ -3,6 +3,7 @@ import { CheckCircle2, Info, X, XCircle } from 'lucide-react';
 import { ToastContext } from './toast-context';
 import { cn } from '@/utils/cn';
 
+/** Border accent and icon per toast variant. */
 const variants = {
   success: { border: 'border-l-success', icon: CheckCircle2, color: 'text-success' },
   error: { border: 'border-l-danger', icon: XCircle, color: 'text-danger' },
@@ -11,13 +12,31 @@ const variants = {
 
 let nextId = 0;
 
+/**
+ * Provides the toast API (`success`, `error`, `info`, `dismiss`) and renders the
+ * toast viewport. Errors use `role="alert"`; others use `role="status"`.
+ * Consume it via the {@link useToast} hook.
+ *
+ * @param {{ children: React.ReactNode }} props
+ */
 export function ToastProvider({ children }) {
   const [toasts, setToasts] = useState([]);
 
+  /**
+   * Remove a toast.
+   * @param {number} id
+   */
   const dismiss = useCallback((id) => {
     setToasts((current) => current.filter((toast) => toast.id !== id));
   }, []);
 
+  /**
+   * Queue a toast and schedule its auto-dismissal.
+   * @param {string} message
+   * @param {'success'|'error'|'info'} variant
+   * @param {number} [duration=4000] - Auto-dismiss delay in ms; `0` keeps it until dismissed.
+   * @returns {number} The new toast's id.
+   */
   const push = useCallback(
     (message, variant, duration = 4000) => {
       const id = ++nextId;
