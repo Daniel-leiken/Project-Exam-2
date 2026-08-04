@@ -61,14 +61,16 @@ function VenueDetail() {
       {image && (
         <img
           src={image.url}
-          alt={image.alt || venue.name}
+          alt={image.alt || venue.name?.trim() || 'Venue'}
           className="mt-4 aspect-[16/9] w-full rounded-lg object-cover"
         />
       )}
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_360px]">
         <div>
-          <h1 className="font-display text-3xl font-semibold text-primary-900">{venue.name}</h1>
+          <h1 className="font-display text-3xl font-semibold text-primary-900">
+            {venue.name?.trim() || 'Untitled venue'}
+          </h1>
 
           <div className="mt-2 flex flex-wrap items-center gap-4 text-neutral-700">
             {place && (

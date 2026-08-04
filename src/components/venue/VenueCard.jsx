@@ -25,7 +25,7 @@ function VenueCard({ venue }) {
           {image ? (
             <img
               src={image.url}
-              alt={image.alt || venue.name}
+              alt={image.alt || venue.name?.trim() || 'Venue'}
               loading="lazy"
               className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
             />
@@ -38,7 +38,9 @@ function VenueCard({ venue }) {
 
         <div className="p-4">
           <div className="flex items-start justify-between gap-2">
-            <h3 className="line-clamp-1 font-semibold text-neutral-900">{venue.name}</h3>
+            <h3 className="line-clamp-1 font-semibold text-neutral-900">
+              {venue.name?.trim() || 'Untitled venue'}
+            </h3>
             {venue.rating > 0 && (
               <span className="flex shrink-0 items-center gap-1 text-sm text-neutral-700">
                 <Star className="h-4 w-4 fill-warning text-warning" aria-hidden="true" />
