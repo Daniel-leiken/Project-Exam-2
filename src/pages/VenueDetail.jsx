@@ -5,6 +5,7 @@ import { getVenue } from '@/api/venues';
 import { useApiQuery } from '@/hooks/useApiQuery';
 import { BookingForm } from '@/components/venue/BookingForm';
 import { Spinner } from '@/components/ui/Spinner';
+import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
 import { buttonVariants } from '@/components/ui/button-variants';
 
 const AMENITIES = [
@@ -58,13 +59,11 @@ function VenueDetail() {
         <ArrowLeft className="h-4 w-4" aria-hidden="true" /> Back to venues
       </Link>
 
-      {image && (
-        <img
-          src={image.url}
-          alt={image.alt || venue.name?.trim() || 'Venue'}
-          className="mt-4 aspect-[16/9] w-full rounded-lg object-cover"
-        />
-      )}
+      <ImageWithFallback
+        src={image?.url}
+        alt={image?.alt || venue.name?.trim() || 'Venue'}
+        className="mt-4 aspect-[16/9] w-full overflow-hidden rounded-lg"
+      />
 
       <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_360px]">
         <div>

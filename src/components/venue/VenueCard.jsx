@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ImageOff, MapPin, Star } from 'lucide-react';
+import { MapPin, Star } from 'lucide-react';
 import { Card } from '@/components/ui/Card';
+import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
 import { formatPrice } from '@/utils/format';
 
 /**
@@ -21,20 +22,12 @@ function VenueCard({ venue }) {
       className="group block rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2"
     >
       <Card className="h-full transition-shadow group-hover:shadow-lg">
-        <div className="aspect-[4/3] overflow-hidden bg-neutral-100">
-          {image ? (
-            <img
-              src={image.url}
-              alt={image.alt || venue.name?.trim() || 'Venue'}
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
-            />
-          ) : (
-            <div className="flex h-full items-center justify-center text-neutral-400">
-              <ImageOff className="h-8 w-8" aria-hidden="true" />
-            </div>
-          )}
-        </div>
+        <ImageWithFallback
+          src={image?.url}
+          alt={image?.alt || venue.name?.trim() || 'Venue'}
+          className="aspect-[4/3] overflow-hidden"
+          imgClassName="group-hover:scale-[1.03]"
+        />
 
         <div className="p-4">
           <div className="flex items-start justify-between gap-2">
