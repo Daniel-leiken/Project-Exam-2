@@ -48,3 +48,45 @@ export async function searchVenues({ q, page = 1, limit = 12 }) {
 export async function getVenue(id) {
   return apiRequest(`${ENDPOINTS.venues}/${id}?${RELATIONS}`);
 }
+
+/**
+ * Create a new venue (venue managers only).
+ *
+ * @param {object} venue - Venue payload (name, price, maxGuests, media, meta, location…).
+ * @returns {Promise<{ data: object }>}
+ */
+export async function createVenue(venue) {
+  return apiRequest(ENDPOINTS.venues, { method: 'POST', auth: true, body: venue });
+}
+
+/**
+ * Update a venue you manage.
+ *
+ * @param {string} id
+ * @param {object} venue - Updated venue payload.
+ * @returns {Promise<{ data: object }>}
+ */
+export async function updateVenue(id, venue) {
+  return apiRequest(`${ENDPOINTS.venues}/${id}`, { method: 'PUT', auth: true, body: venue });
+}
+
+/**
+ * Delete a venue you manage.
+ *
+ * @param {string} id
+ * @returns {Promise<null>}
+ */
+export async function deleteVenue(id) {
+  return apiRequest(`${ENDPOINTS.venues}/${id}`, { method: 'DELETE', auth: true });
+}
+
+/**
+ * Fetch the venues owned by a profile, each with its bookings.
+ *
+ * @param {string} name - The manager's profile name.
+ * @returns {Promise<{ data: object[], meta: object }>}
+ */
+export async function getManagerVenues(name) {
+  const query = '?_bookings=true&sort=created&sortOrder=desc';
+  return apiRequest(`${ENDPOINTS.profiles}/${name}/venues${query}`, { auth: true });
+}
