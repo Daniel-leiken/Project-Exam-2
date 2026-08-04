@@ -11,7 +11,9 @@ import { formatPrice } from '@/utils/format';
  */
 function VenueCard({ venue }) {
   const image = venue.media?.[0];
-  const place = [venue.location?.city, venue.location?.country].filter(Boolean).join(', ');
+  const place = [venue.location?.city, venue.location?.country]
+    .filter((part) => part && part.trim())
+    .join(', ');
 
   return (
     <Link
@@ -45,12 +47,10 @@ function VenueCard({ venue }) {
             )}
           </div>
 
-          {place && (
-            <p className="mt-1 flex items-center gap-1 text-sm text-neutral-500">
-              <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
-              <span className="line-clamp-1">{place}</span>
-            </p>
-          )}
+          <p className="mt-1 flex items-center gap-1 text-sm text-neutral-500">
+            <MapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+            <span className="line-clamp-1">{place || 'Location not specified'}</span>
+          </p>
 
           <p className="mt-3 text-neutral-900">
             <span className="font-semibold">{formatPrice(venue.price)}</span>
