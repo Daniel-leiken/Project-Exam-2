@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { buttonVariants } from '@/components/ui/button-variants';
 
 /** 404 page shown for unmatched routes. */
 function NotFound() {
+  useDocumentTitle('Page not found');
+
   return (
     <section className="mx-auto flex max-w-screen-xl flex-col items-center px-5 py-24 text-center lg:px-20">
       <p className="font-display text-6xl font-semibold text-primary-900">404</p>

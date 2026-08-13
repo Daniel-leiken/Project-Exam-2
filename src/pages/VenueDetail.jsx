@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft, Car, Coffee, MapPin, PawPrint, Star, Users, Wifi } from 'lucide-react';
 import { getVenue } from '@/api/venues';
 import { useApiQuery } from '@/hooks/useApiQuery';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { BookingForm } from '@/components/venue/BookingForm';
 import { Spinner } from '@/components/ui/Spinner';
 import { ImageWithFallback } from '@/components/ui/ImageWithFallback';
@@ -23,6 +24,7 @@ function VenueDetail() {
   const { id } = useParams();
   const queryFn = useCallback(() => getVenue(id), [id]);
   const { data, loading, error } = useApiQuery(queryFn);
+  useDocumentTitle(data?.data?.name?.trim() || 'Venue');
 
   if (loading) {
     return (

@@ -1,21 +1,25 @@
+import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { ProtectedRoute } from '@/components/ProtectedRoute';
-import Home from '@/pages/Home';
-import Venues from '@/pages/Venues';
-import VenueDetail from '@/pages/VenueDetail';
-import Login from '@/pages/Login';
-import Register from '@/pages/Register';
-import Profile from '@/pages/Profile';
-import ManagerDashboard from '@/pages/ManagerDashboard';
-import CreateVenue from '@/pages/CreateVenue';
-import EditVenue from '@/pages/EditVenue';
-import VenueBookings from '@/pages/VenueBookings';
-import NotFound from '@/pages/NotFound';
+
+// Lazy-load pages so each route is its own chunk (keeps the initial bundle small
+// and defers heavy dependencies like the booking calendar until they're needed).
+const Home = lazy(() => import('@/pages/Home'));
+const Venues = lazy(() => import('@/pages/Venues'));
+const VenueDetail = lazy(() => import('@/pages/VenueDetail'));
+const Login = lazy(() => import('@/pages/Login'));
+const Register = lazy(() => import('@/pages/Register'));
+const Profile = lazy(() => import('@/pages/Profile'));
+const ManagerDashboard = lazy(() => import('@/pages/ManagerDashboard'));
+const CreateVenue = lazy(() => import('@/pages/CreateVenue'));
+const EditVenue = lazy(() => import('@/pages/EditVenue'));
+const VenueBookings = lazy(() => import('@/pages/VenueBookings'));
+const NotFound = lazy(() => import('@/pages/NotFound'));
 
 /**
  * Application routes. Every page renders inside the shared {@link Layout}.
- * `/profile` requires authentication; `/manager` requires a venue manager.
+ * `/profile` requires authentication; the `/manager` routes require a venue manager.
  */
 function App() {
   return (

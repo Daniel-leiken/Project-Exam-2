@@ -3,10 +3,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { createVenue } from '@/api/venues';
 import { useToast } from '@/hooks/useToast';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { VenueForm } from '@/components/venue/VenueForm';
 
 /** Page for creating a new venue (venue managers only). */
 function CreateVenue() {
+  useDocumentTitle('Create venue');
   const navigate = useNavigate();
   const toast = useToast();
   const [submitting, setSubmitting] = useState(false);

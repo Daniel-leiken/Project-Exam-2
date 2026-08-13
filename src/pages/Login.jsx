@@ -4,6 +4,7 @@ import { login as loginRequest } from '@/api/auth';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/useToast';
 import { isStudEmail } from '@/utils/validation';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { AuthCard } from '@/components/AuthCard';
 import { FormField } from '@/components/ui/FormField';
 import { Button } from '@/components/ui/Button';
@@ -13,6 +14,7 @@ import { Button } from '@/components/ui/Button';
  * returns them to the page they were trying to reach (or home).
  */
 function Login() {
+  useDocumentTitle('Log in');
   const [form, setForm] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);

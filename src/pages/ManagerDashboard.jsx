@@ -5,6 +5,7 @@ import { deleteVenue, getManagerVenues } from '@/api/venues';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/useToast';
 import { useApiQuery } from '@/hooks/useApiQuery';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { formatPrice } from '@/utils/format';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Button } from '@/components/ui/Button';
@@ -18,6 +19,7 @@ import { Spinner } from '@/components/ui/Spinner';
  * view bookings, or delete them, plus a link to create a new venue.
  */
 function ManagerDashboard() {
+  useDocumentTitle('Your venues');
   const { user } = useAuth();
   const toast = useToast();
 

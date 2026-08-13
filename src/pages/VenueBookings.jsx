@@ -4,6 +4,7 @@ import { ArrowLeft, Users } from 'lucide-react';
 import { getVenue } from '@/api/venues';
 import { useAuth } from '@/hooks/useAuth';
 import { useApiQuery } from '@/hooks/useApiQuery';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { formatDate } from '@/utils/format';
 import { Card, CardContent } from '@/components/ui/Card';
 import { Spinner } from '@/components/ui/Spinner';
@@ -16,6 +17,7 @@ function VenueBookings() {
 
   const queryFn = useCallback(() => getVenue(id), [id]);
   const { data, loading, error } = useApiQuery(queryFn);
+  useDocumentTitle('Bookings');
 
   if (loading) {
     return (

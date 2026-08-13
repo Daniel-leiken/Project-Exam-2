@@ -4,6 +4,7 @@ import { login as loginRequest, register as registerRequest } from '@/api/auth';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/useToast';
 import { isStudEmail, isValidUrl, isValidUsername } from '@/utils/validation';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { AuthCard } from '@/components/AuthCard';
 import { FormField } from '@/components/ui/FormField';
 import { Button } from '@/components/ui/Button';
@@ -22,6 +23,7 @@ const initialForm = {
  * the account, then logs the user straight in.
  */
 function Register() {
+  useDocumentTitle('Create account');
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [submitting, setSubmitting] = useState(false);

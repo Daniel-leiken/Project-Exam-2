@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { getVenues, searchVenues } from '@/api/venues';
 import { useApiQuery } from '@/hooks/useApiQuery';
 import { useDebounce } from '@/hooks/useDebounce';
@@ -6,13 +7,16 @@ import { SearchBar } from '@/components/venue/SearchBar';
 import { VenueCard } from '@/components/venue/VenueCard';
 import { Pagination } from '@/components/Pagination';
 import { Spinner } from '@/components/ui/Spinner';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 
 /**
  * Venue browsing page: a searchable, paginated grid of venues. An empty search
  * lists all venues; typing switches to the search endpoint (debounced).
  */
 function Venues() {
-  const [query, setQuery] = useState('');
+  useDocumentTitle('Venues');
+  const [searchParams] = useSearchParams();
+  const [query, setQuery] = useState(() => searchParams.get('q') ?? '');
   const [page, setPage] = useState(1);
   const debouncedQuery = useDebounce(query);
   const search = debouncedQuery.trim();

@@ -23,6 +23,12 @@
 @tailwind utilities;
 
 @layer base {
+  /* Always reserve the scrollbar gutter so page width stays constant and the
+     header doesn't shift when navigating between short and tall pages. */
+  html {
+    scrollbar-gutter: stable;
+  }
+
   body {
     @apply bg-neutral-50 text-neutral-900 antialiased;
     font-family: theme('fontFamily.sans');
@@ -32,5 +38,17 @@
      Primary-700 clears 3:1 against white; Primary-500 (the brand accent) does not. */
   :focus-visible {
     @apply outline-none ring-2 ring-primary-700 ring-offset-2;
+  }
+}
+
+/* Respect users who prefer reduced motion: make transitions/animations near-instant. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

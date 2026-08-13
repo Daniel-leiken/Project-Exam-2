@@ -1,10 +1,11 @@
 import { useCallback, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { updateAvatar } from '@/api/profiles';
+import { updateAvatar, updateProfile } from '@/api/profiles';
 import { getMyBookings } from '@/api/bookings';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/useToast';
 import { useApiQuery } from '@/hooks/useApiQuery';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { isValidUrl } from '@/utils/validation';
 import { formatDate } from '@/utils/format';
 import { Card, CardContent } from '@/components/ui/Card';
@@ -17,11 +18,13 @@ import { Spinner } from '@/components/ui/Spinner';
  * avatar, and lists their upcoming bookings.
  */
 function Profile() {
+  useDocumentTitle('Your profile');
   const { user, updateUser } = useAuth();
   const toast = useToast();
   const [avatarUrl, setAvatarUrl] = useState(user?.avatar?.url ?? '');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [updatingRole, setUpdatingRole] = useState(false);
 
   const bookingsQuery = useCallback(() => getMyBookings(user.name), [user.name]);
   const { data, loading } = useApiQuery(bookingsQuery);
@@ -47,6 +50,20 @@ function Profile() {
     }
   }
 
+  async function toggleManager() {
+    const next = !user.venueManager;
+    setUpdatingRole(true);
+    try {
+      await updateProfile(user.name, { venueManager: next });
+      updateUser({ venueManager: next });
+      toast.success(next ? 'You are now a venue manager!' : 'You are no longer a venue manager.');
+    } catch (requestError) {
+      toast.error(requestError.message);
+    } finally {
+      setUpdatingRole(false);
+    }
+  }
+
   return (
     <section className="mx-auto max-w-screen-xl px-5 py-16 lg:px-20">
       <header className="flex items-center gap-4">
@@ -65,6 +82,11 @@ function Profile() {
               Venue manager
             </span>
           )}
+          <div className="mt-2">
+            <Button variant="outline" size="sm" loading={updatingRole} onClick={toggleManager}>
+              {user?.venueManager ? 'Stop being a venue manager' : 'Become a venue manager'}
+            </Button>
+          </div>
         </div>
       </header>
 

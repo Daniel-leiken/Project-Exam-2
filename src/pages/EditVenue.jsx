@@ -5,6 +5,7 @@ import { getVenue, updateVenue } from '@/api/venues';
 import { useAuth } from '@/hooks/useAuth';
 import { useToast } from '@/hooks/useToast';
 import { useApiQuery } from '@/hooks/useApiQuery';
+import { useDocumentTitle } from '@/hooks/useDocumentTitle';
 import { VenueForm } from '@/components/venue/VenueForm';
 import { Spinner } from '@/components/ui/Spinner';
 import { buttonVariants } from '@/components/ui/button-variants';
@@ -19,6 +20,7 @@ function EditVenue() {
 
   const queryFn = useCallback(() => getVenue(id), [id]);
   const { data, loading, error } = useApiQuery(queryFn);
+  useDocumentTitle('Edit venue');
 
   async function handleSubmit(payload) {
     setSubmitting(true);

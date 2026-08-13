@@ -21,7 +21,7 @@ function SearchBar({ value, onChange, placeholder = 'Search venues…' }) {
         onChange={(event) => onChange(event.target.value)}
         placeholder={placeholder}
         aria-label="Search venues"
-        className="h-12 w-full rounded-full border border-neutral-400 bg-white pl-12 pr-4 text-neutral-900 placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2"
+        className="h-12 w-full appearance-none rounded-full border border-neutral-400 bg-white pl-12 pr-4 text-neutral-900 placeholder:text-neutral-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2"
       />
     </div>
   );
