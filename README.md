@@ -112,8 +112,8 @@ src/
 - **Hosted demo:** https://project-exam-2-danielstr.netlify.app
 - **Kanban board:** https://github.com/users/Daniel-leiken/projects/2
 - **Gantt chart:** [GANTT.md](GANTT.md)
-- **Design prototype:** _add Figma prototype link_
-- **Style guide:** _add Figma style guide link_
+- **Design prototype:** https://www.figma.com/design/PcsdABq1I9XK7yMARsEJZD/Project-Exam-2---Holidaze?node-id=1-1000
+- **Style guide:** https://project-exam-2-danielstr.netlify.app/Holidaze-Style-Guide.pdf
 
 ## Planning
 

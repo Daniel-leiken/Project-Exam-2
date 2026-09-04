@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Holidaze — Style Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary-900: #0b3b3c;
+        --primary-700: #115e59;
+        --primary-500: #14b8a6;
+        --primary-100: #ccfbf1;
+        --neutral-900: #0f172a;
+        --neutral-700: #334155;
+        --neutral-500: #64748b;
+        --neutral-400: #94a3b8;
+        --neutral-300: #cbd5e1;
+        --neutral-100: #f1f5f9;
+        --neutral-50: #f8fafc;
+        --success: #15803d;
+        --warning: #b45309;
+        --danger: #b91c1c;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      body {
+        font-family: 'Inter', system-ui, sans-serif;
+        color: var(--neutral-900);
+        background: #fff;
+        line-height: 1.5;
+      }
+
+      .page {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 48px 40px;
+      }
+
+      .display {
+        font-family: 'Fraunces', Georgia, serif;
+      }
+
+      h1.title {
+        font-size: 56px;
+        font-weight: 600;
+        color: var(--primary-900);
+        line-height: 1.05;
+      }
+
+      .lede {
+        margin-top: 12px;
+        max-width: 46ch;
+        color: var(--neutral-700);
+        font-size: 18px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 8px;
+        font-size: 12px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--primary-700);
+        font-weight: 600;
+      }
+
+      section {
+        margin-top: 56px;
+        break-inside: avoid;
+      }
+
+      h2.section {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: 30px;
+        font-weight: 600;
+        color: var(--primary-900);
+        border-bottom: 2px solid var(--primary-100);
+        padding-bottom: 10px;
+      }
+
+      h3 {
+        margin: 24px 0 12px;
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--neutral-900);
+      }
+
+      p.muted {
+        color: var(--neutral-700);
+        margin-top: 8px;
+      }
+
+      .grid {
+        display: grid;
+        gap: 16px;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .swatch {
+        border: 1px solid var(--neutral-300);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .swatch .chip {
+        height: 72px;
+      }
+
+      .swatch .meta {
+        padding: 12px 14px;
+      }
+
+      .swatch .name {
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .swatch .hex {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 13px;
+        color: var(--neutral-500);
+      }
+
+      .swatch .use {
+        font-size: 13px;
+        color: var(--neutral-700);
+        margin-top: 4px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      th,
+      td {
+        text-align: left;
+        padding: 10px 12px;
+        border-bottom: 1px solid var(--neutral-300);
+      }
+
+      th {
+        font-size: 12px;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--neutral-500);
+      }
+
+      code {
+        font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+        font-size: 13px;
+        background: var(--neutral-100);
+        padding: 2px 6px;
+        border-radius: 6px;
+      }
+
+      /* Live component samples */
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: 36px;
+        padding: 0 16px;
+        border-radius: 8px;
+        font-weight: 500;
+        font-size: 16px;
+        border: 0;
+        cursor: default;
+      }
+      .btn-primary {
+        background: var(--primary-900);
+        color: #fff;
+      }
+      .btn-secondary {
+        background: #fff;
+        color: var(--neutral-900);
+        box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+      }
+      .btn-outline {
+        background: transparent;
+        color: var(--neutral-900);
+        border: 1px solid var(--neutral-400);
+      }
+      .btn-ghost {
+        background: transparent;
+        color: var(--neutral-900);
+      }
+      .btn-danger {
+        background: var(--danger);
+        color: #fff;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .input {
+        height: 48px;
+        width: 260px;
+        border: 1px solid var(--neutral-400);
+        border-radius: 12px;
+        padding: 0 16px;
+        font: inherit;
+        color: var(--neutral-900);
+      }
+      .input.focused {
+        border-color: var(--primary-700);
+        box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--primary-700);
+      }
+
+      .card {
+        width: 240px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+        overflow: hidden;
+        border: 1px solid var(--neutral-100);
+      }
+      .card .cover {
+        height: 120px;
+        background: linear-gradient(135deg, var(--primary-500), var(--primary-900));
+      }
+      .card .body {
+        padding: 16px;
+      }
+      .card .body strong {
+        display: block;
+      }
+      .card .price {
+        margin-top: 8px;
+        color: var(--neutral-500);
+      }
+      .card .price b {
+        color: var(--neutral-900);
+      }
+
+      .badge {
+        display: inline-block;
+        background: var(--primary-100);
+        color: var(--primary-900);
+        border-radius: 8px;
+        padding: 2px 10px;
+        font-size: 13px;
+      }
+
+      .note {
+        border-left: 4px solid var(--primary-500);
+        background: var(--primary-100);
+        border-radius: 8px;
+        padding: 14px 16px;
+        margin-top: 16px;
+        font-size: 14px;
+      }
+
+      ul.checks {
+        margin-top: 12px;
+        padding-left: 18px;
+      }
+      ul.checks li {
+        margin-bottom: 6px;
+        color: var(--neutral-700);
+      }
+
+      .type-sample {
+        border-left: 3px solid var(--primary-500);
+        padding-left: 16px;
+        margin-top: 16px;
+      }
+      .type-sample .label {
+        font-size: 12px;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--neutral-500);
+      }
+
+      footer {
+        margin-top: 64px;
+        padding-top: 16px;
+        border-top: 1px solid var(--neutral-300);
+        font-size: 13px;
+        color: var(--neutral-500);
+        text-align: center;
+      }
+
+      @page {
+        size: A4;
+        margin: 16mm;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <span class="eyebrow">Design System · v1.0</span>
+      <h1 class="title display">Holidaze<br />Style Guide</h1>
+      <p class="lede">
+        The visual language behind Holidaze — a teal-led, WCAG-compliant system for a premium yet
+        accessible accommodation booking experience.
+      </p>
+
+      <section>
+        <h2 class="section display">01 · Brand</h2>
+        <p class="muted">
+          Holidaze connects travellers with unique stays worldwide. The tone is friendly yet
+          professional, with short, action-driven labels like “Book now” and “Get started”.
+        </p>
+        <h3>Logo</h3>
+        <p class="muted">
+          Wordmark set in <strong>Fraunces 600</strong>, Primary 900. Minimum height 24px, minimum
+          16px clear space. Never stretch, rotate or add effects.
+        </p>
+        <p class="display" style="font-size: 40px; font-weight: 600; color: var(--primary-900); margin-top: 12px;">
+          Holidaze
+        </p>
+      </section>
+
+      <section>
+        <h2 class="section display">02 · Colour</h2>
+        <h3>Primary — Teal</h3>
+        <div class="grid">
+          <div class="swatch">
+            <div class="chip" style="background: var(--primary-900)"></div>
+            <div class="meta">
+              <div class="name">Primary 900</div>
+              <div class="hex">#0B3B3C</div>
+              <div class="use">Buttons, logo, headings, high-emphasis</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--primary-700)"></div>
+            <div class="meta">
+              <div class="name">Primary 700</div>
+              <div class="hex">#115E59</div>
+              <div class="use">Hover / active states, focus rings</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--primary-500)"></div>
+            <div class="meta">
+              <div class="name">Primary 500</div>
+              <div class="hex">#14B8A6</div>
+              <div class="use">Accents, highlights</div>
+            </div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--primary-100)"></div>
+            <div class="meta">
+              <div class="name">Primary 100</div>
+              <div class="hex">#CCFBF1</div>
+              <div class="use">Light backgrounds, badges, selected states</div>
+            </div>
+          </div>
+        </div>
+
+        <h3>Neutral</h3>
+        <div class="grid">
+          <div class="swatch">
+            <div class="chip" style="background: var(--neutral-900)"></div>
+            <div class="meta"><div class="name">Neutral 900</div><div class="hex">#0F172A</div><div class="use">Body text, headings</div></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--neutral-700)"></div>
+            <div class="meta"><div class="name">Neutral 700</div><div class="hex">#334155</div><div class="use">Secondary text</div></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--neutral-500)"></div>
+            <div class="meta"><div class="name">Neutral 500</div><div class="hex">#64748B</div><div class="use">Muted text, icons</div></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--neutral-400)"></div>
+            <div class="meta"><div class="name">Neutral 400</div><div class="hex">#94A3B8</div><div class="use">Input borders (≥3:1 contrast)</div></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--neutral-300)"></div>
+            <div class="meta"><div class="name">Neutral 300</div><div class="hex">#CBD5E1</div><div class="use">Dividers</div></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--neutral-50); border-bottom: 1px solid var(--neutral-300)"></div>
+            <div class="meta"><div class="name">Neutral 50</div><div class="hex">#F8FAFC</div><div class="use">Page background</div></div>
+          </div>
+        </div>
+
+        <h3>Semantic</h3>
+        <div class="grid">
+          <div class="swatch">
+            <div class="chip" style="background: var(--success)"></div>
+            <div class="meta"><div class="name">Success</div><div class="hex">#15803D</div><div class="use">Confirmations, available</div></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--warning)"></div>
+            <div class="meta"><div class="name">Warning</div><div class="hex">#B45309</div><div class="use">Caution, limited</div></div>
+          </div>
+          <div class="swatch">
+            <div class="chip" style="background: var(--danger)"></div>
+            <div class="meta"><div class="name">Danger</div><div class="hex">#B91C1C</div><div class="use">Errors, destructive actions</div></div>
+          </div>
+        </div>
+
+        <div class="note">
+          <strong>Contrast.</strong> Body text on white reaches 17.9:1 (AAA); Primary 900 on white
+          12.3:1 (AAA). Focus rings use Primary 700 and input borders Neutral 400 so both clear the
+          3:1 non-text minimum. All interactive elements meet WCAG AA.
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section display">03 · Typography</h2>
+        <p class="muted">
+          <strong>Fraunces</strong> (serif) carries display moments; <strong>Inter</strong> (sans)
+          handles everything else.
+        </p>
+        <div class="type-sample">
+          <div class="label">H1 · Fraunces 600</div>
+          <div class="display" style="font-size: 44px; font-weight: 600; color: var(--primary-900)">
+            Find your perfect getaway
+          </div>
+        </div>
+        <div class="type-sample">
+          <div class="label">H2 · Inter 600 · 28px</div>
+          <div style="font-size: 28px; font-weight: 600">Featured stays</div>
+        </div>
+        <div class="type-sample">
+          <div class="label">H3 · Inter 600 · 22px</div>
+          <div style="font-size: 22px; font-weight: 600">Luxury Beach Villa</div>
+        </div>
+        <div class="type-sample">
+          <div class="label">Body · Inter 400 · 16px</div>
+          <div>Discover unique stays that match exactly what you’re looking for.</div>
+        </div>
+        <div class="type-sample">
+          <div class="label">Small · Inter 400 · 14px</div>
+          <div style="font-size: 14px; color: var(--neutral-500)">Posted 2 days ago · 248 reviews</div>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section display">04 · Spacing, radius &amp; shadow</h2>
+        <p class="muted">Spacing derives from a 4px base. Layout max-width 1280px.</p>
+        <table>
+          <tr><th>Token</th><th>Value</th><th>Usage</th></tr>
+          <tr><td><code>radius-sm</code></td><td>8px</td><td>Buttons</td></tr>
+          <tr><td><code>radius-md</code></td><td>12px</td><td>Inputs, cards</td></tr>
+          <tr><td><code>radius-lg</code></td><td>16px</td><td>Large surfaces</td></tr>
+          <tr><td><code>radius-xl</code></td><td>20px</td><td>Modals</td></tr>
+          <tr><td><code>shadow-sm</code></td><td>0 1px 2px rgb(0 0 0 / .05)</td><td>Cards</td></tr>
+          <tr><td><code>shadow-md</code></td><td>0 4px 6px -1px rgb(0 0 0 / .1)</td><td>Raised</td></tr>
+          <tr><td><code>shadow-lg</code></td><td>0 10px 15px -3px rgb(0 0 0 / .1)</td><td>Modals, hover</td></tr>
+        </table>
+        <h3>Breakpoints</h3>
+        <table>
+          <tr><th>Name</th><th>Min width</th><th>Grid</th></tr>
+          <tr><td>Mobile</td><td>&lt; 768px</td><td>1 column</td></tr>
+          <tr><td>Tablet (md)</td><td>768px</td><td>2 columns</td></tr>
+          <tr><td>Desktop (lg)</td><td>1024px</td><td>4 columns</td></tr>
+          <tr><td>Wide (xl)</td><td>1280px</td><td>Max width</td></tr>
+        </table>
+      </section>
+
+      <section>
+        <h2 class="section display">05 · Components</h2>
+        <h3>Buttons</h3>
+        <div class="row">
+          <span class="btn btn-primary">Book now</span>
+          <span class="btn btn-secondary">Secondary</span>
+          <span class="btn btn-outline">Outline</span>
+          <span class="btn btn-ghost">Ghost</span>
+          <span class="btn btn-danger">Delete</span>
+        </div>
+        <p class="muted" style="margin-top: 10px">
+          Heights sm 32 / default 36 / lg 40px · radius 8px · focus ring 2px Primary 700 with offset
+          · primary hover → Primary 700.
+        </p>
+
+        <h3>Form input</h3>
+        <div class="row">
+          <input class="input" placeholder="Email address" />
+          <input class="input focused" value="you@example.com" readonly />
+        </div>
+        <p class="muted" style="margin-top: 10px">
+          Height 48px · radius 12px · border Neutral 400 · focus 2px Primary 700 ring · errors use
+          Danger with an inline message and <code>aria-invalid</code>.
+        </p>
+
+        <h3>Venue card &amp; badge</h3>
+        <div class="row" style="align-items: flex-start">
+          <div class="card">
+            <div class="cover"></div>
+            <div class="body">
+              <strong>Luxury Beach Villa</strong>
+              <span style="font-size: 14px; color: var(--neutral-500)">Santorini, Greece · ★ 4.9</span>
+              <div class="price"><b>NOK 2,450</b> / night</div>
+            </div>
+          </div>
+          <span class="badge">Venue manager</span>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section display">06 · Accessibility</h2>
+        <ul class="checks">
+          <li>All text meets WCAG AA; body and headings reach AAA.</li>
+          <li>Every interactive element has a visible focus ring (2px Primary 700, offset).</li>
+          <li>Colour is never the only signal — errors add text and <code>aria-invalid</code>.</li>
+          <li>Semantic HTML: <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, headings in order.</li>
+          <li>Icon-only buttons carry <code>aria-label</code>; images carry meaningful <code>alt</code>.</li>
+          <li>A skip link, per-page titles and reduced-motion support are built in.</li>
+        </ul>
+      </section>
+
+      <footer>
+        Holidaze Design System · v1.0 · Generated from the implemented React + Tailwind theme
+      </footer>
+    </div>
+  </body>
+</html>

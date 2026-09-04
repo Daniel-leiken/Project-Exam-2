@@ -45,16 +45,19 @@ function Home() {
   return (
     <>
       <section className="relative overflow-hidden bg-primary-900 text-white">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -right-24 -top-24 h-96 w-96 rounded-full bg-primary-700/50 blur-3xl"
+        <img
+          src="/hero.jpg"
+          alt=""
+          fetchPriority="high"
+          className="absolute inset-0 h-full w-full object-cover"
         />
+        {/* Teal overlay keeps white text at AAA contrast over the photo. */}
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute -bottom-24 left-1/4 h-72 w-72 rounded-full bg-primary-500/20 blur-3xl"
+          className="absolute inset-0 bg-gradient-to-br from-primary-900/90 to-primary-900/60"
         />
 
-        <div className="relative mx-auto max-w-screen-xl px-5 py-20 lg:px-20 lg:py-28">
+        <div className="relative mx-auto max-w-screen-xl px-5 py-24 lg:px-20 lg:py-32">
           <h1 className="max-w-3xl font-display text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
             Find somewhere you’ll never want to leave
           </h1>
