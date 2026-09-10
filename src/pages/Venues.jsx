@@ -62,7 +62,7 @@ function Venues() {
           </p>
         ) : (
           <>
-            <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {venues.map((venue) => (
                 <li key={venue.id}>
                   <VenueCard venue={venue} />

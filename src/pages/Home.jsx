@@ -51,7 +51,7 @@ function Home() {
           fetchPriority="high"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* Teal overlay keeps white text at AAA contrast over the photo. */}
+        {/* Teal overlay — darkest where the text sits — keeps the hero content readable over the photo. */}
         <div
           aria-hidden="true"
           className="absolute inset-0 bg-gradient-to-br from-primary-900/90 to-primary-900/60"
@@ -105,7 +105,7 @@ function Home() {
               <Spinner size="lg" label="Loading venues…" />
             </div>
           ) : featured.length > 0 ? (
-            <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
               {featured.map((venue) => (
                 <li key={venue.id}>
                   <VenueCard venue={venue} />
