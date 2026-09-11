@@ -11,6 +11,7 @@ import { cn } from '@/utils/cn';
  * profile/logout when authenticated, or login/register when not. Collapses to a
  * toggle menu below the `md` breakpoint.
  */
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { isAuthenticated, isVenueManager, user, logout } = useAuth();

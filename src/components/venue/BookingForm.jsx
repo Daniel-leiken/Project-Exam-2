@@ -31,6 +31,13 @@ function BookingForm({ venue }) {
 
   const nights = range?.from && range?.to ? Math.round((range.to - range.from) / MS_PER_DAY) : 0;
 
+  // Clamp to a whole number within [1, maxGuests]; used on blur and on submit
+  // so typing isn't forced to the max on every keystroke.
+  const clampGuests = (value) => {
+    const count = Math.floor(Number(value));
+    return count >= 1 ? Math.min(venue.maxGuests, count) : 1;
+  };
+
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -49,7 +56,7 @@ function BookingForm({ venue }) {
         venueId: venue.id,
         dateFrom: range.from.toISOString(),
         dateTo: range.to.toISOString(),
-        guests,
+        guests: clampGuests(guests),
       });
       toast.success('Booking confirmed! Find it under your bookings.');
       navigate('/profile');
@@ -84,9 +91,9 @@ function BookingForm({ venue }) {
           min={1}
           max={venue.maxGuests}
           value={guests}
-          onChange={(event) =>
-            setGuests(Math.min(venue.maxGuests, Math.max(1, Number(event.target.value))))
-          }
+          onChange={(event) => setGuests(event.target.value)}
+          onFocus={(event) => event.target.select()}
+          onBlur={(event) => setGuests(clampGuests(event.target.value))}
           className="h-12 w-full rounded-md border border-neutral-400 bg-white px-4 text-neutral-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-700 focus-visible:ring-offset-2"
         />
         <p className="mt-1 text-sm text-neutral-500">Up to {venue.maxGuests} guests.</p>
